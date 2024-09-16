@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="ProjetoAPI" namespace="ProjetoAPI.Entidades">
+	<class name="Posto" table="posto">
+		<id name="PostoId" column="postoid">
+			<generator class="native"/>
+		</id>
+		<property name="CNPJ" column="cnpj"/>
+		<property name="Endereco" column="endereco"/>
+		<property name="Telefone" column="telefone"/>
+		<property name="HoraFuncionamento" column="hora_funcionamento"/>
+		<property name="Bandeira" column="bandeira"/>
+		<many-to-one name="DonoPosto" class="DonoPosto" column="donopostoid" not-null="true" lazy="proxy"/>
+	</class>
+</hibernate-mapping>
