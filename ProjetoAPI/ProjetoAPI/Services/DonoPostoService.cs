@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using NHibernate;
+using ProjetoAPI.Dtos;
 using ProjetoAPI.Entidades;
 using System.ComponentModel.DataAnnotations;
 
@@ -73,6 +74,50 @@ namespace ProjetoAPI.Services
                 throw new Exception("Dono do Posto não encontrado");
             }
             return donoPosto.Postos.ToList();
+        }
+        public bool EditarDonoPosto(int id, DonoPosto donoposto)
+        {
+            using var session = sessionFactory.OpenSession();
+            using var transaction = session.BeginTransaction();
+            var donoPosto = session.Get<DonoPosto>(id);
+            if (donoPosto == null)
+            {
+                return false;
+            }
+            donoPosto.Nome = donoposto.Nome;
+            donoPosto.CPF = donoposto.CPF;
+            donoPosto.Email = donoposto.Email;
+            donoPosto.SenhaHasheada = HashSenha(donoposto.SenhaHasheada);
+            donoPosto.Telefone = donoposto.Telefone;
+            session.Update(donoPosto);
+            transaction.Commit();
+            return true;
+        }
+        public DonoPosto MostrarInformacoes(int id)
+        {
+            using var session = sessionFactory.OpenSession();
+            var donoPosto = session.Get<DonoPosto>(id);
+            if (donoPosto == null)
+            {
+                throw new Exception("Dono do Posto não encontrado");
+            }
+            return donoPosto;
+        }
+        public DonoPosto Remover(int id)
+        {
+            using var session = sessionFactory.OpenSession();
+            using var transaction = session.BeginTransaction();
+            var donoPosto = session.QueryOver<DonoPosto>()
+                           .Where(d => d.DonoPostoId == id)
+                           .Fetch(d => d.Postos).Eager
+                           .SingleOrDefault();
+            if (donoPosto == null)
+            {
+                throw new Exception("Dono do Posto não encontrado");
+            }
+            session.Delete(donoPosto);
+            transaction.Commit();
+            return donoPosto;
         }
     }
 }

@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NHibernate;
 using Org.BouncyCastle.Crypto.Generators;
 using ProjetoAPI.Dtos;
 using ProjetoAPI.Entidades;
 using ProjetoAPI.Services;
+using System.Security.Claims;
 
 namespace ProjetoAPI.Controllers
 {
@@ -13,9 +15,11 @@ namespace ProjetoAPI.Controllers
     public class PostoController : ControllerBase
     {
         private readonly PostoService postoService;
-        public PostoController(PostoService postoService)
+        private readonly ISessionFactory sessionFactory;
+        public PostoController(PostoService postoService, ISessionFactory sessionFactory)
         {
             this.postoService = postoService;
+            this.sessionFactory = sessionFactory;
         }
         [Authorize]
         [HttpPut("editar")]
@@ -33,13 +37,39 @@ namespace ProjetoAPI.Controllers
             return BadRequest("Erro ao editar");
         }
         [Authorize]
+        [HttpPut("editarpreco")]
+        public IActionResult EditarValores(int id, [FromBody] PostoDTOGas postodtogas)
+        {
+            if (postodtogas == null)
+            {
+                return BadRequest("Você não passou um posto");
+            }
+            var sucesso = postoService.EditarPreco(id, postodtogas);
+            if (sucesso)
+            {
+                return Ok(postodtogas);
+            }
+            return BadRequest("Erro ao editar os valores dos combustíveis");
+        }
+        [Authorize]
         [HttpDelete("deletar")]
         public IActionResult Remover(int id)
         {
-            var posto = postoService.Remover(id);
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
+            {
+                return Unauthorized("Usuário não identificado.");
+            }
+            int donopostoId = int.Parse(userIdClaim.Value);
+            using var session = sessionFactory.OpenSession();
+            var donoposto = session.Get<DonoPosto>(donopostoId);
+            var posto = postoService.GetPorId(id);
             if (posto == null)
             {
                 return NotFound();
+            }
+            if (donoposto.Postos != null && donoposto.Postos.Contains(posto)) {
+                postoService.Remover(id);
             }
             return Ok(posto);
         }

@@ -14,6 +14,7 @@ var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "ProjetoAPI", Version = "v1" });
@@ -68,7 +69,11 @@ builder.Services.AddAuthentication(options =>
     };
 });
 builder.Services.AddAuthorization();
-
+builder.Services.AddCors(
+    b => b.AddDefaultPolicy(c =>
+        c.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin()
+    )
+);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -81,5 +86,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseCors();
 app.MapControllers();
 app.Run();

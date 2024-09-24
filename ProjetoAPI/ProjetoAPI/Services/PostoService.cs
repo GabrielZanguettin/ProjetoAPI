@@ -25,6 +25,11 @@ namespace ProjetoAPI.Services
             transaction.Commit();
             return posto;
         }
+        public Posto GetPorId(int id)
+        {
+            using var session = sessionFactory.OpenSession();
+            return session.Get<Posto>(id);
+        }
         public bool Editar(int id, PostoDTO postodto)
         {
             using var session = sessionFactory.OpenSession();
@@ -39,6 +44,22 @@ namespace ProjetoAPI.Services
             posto.Telefone = postodto.Telefone;
             posto.HoraFuncionamento = postodto.HoraFuncionamento;
             posto.Bandeira = postodto.Bandeira;
+            session.Update(posto);
+            transaction.Commit();
+            return true;
+        }
+        public bool EditarPreco(int id, PostoDTOGas postodtogas)
+        {
+            using var session = sessionFactory.OpenSession();
+            using var transaction = session.BeginTransaction();
+            var posto = session.Get<Posto>(id);
+            if (posto == null)
+            {
+                return false;
+            }
+            posto.Gasolina = postodtogas.Gasolina;
+            posto.Diesel = postodtogas.Diesel;
+            posto.Etanol = postodtogas.Etanol;
             session.Update(posto);
             transaction.Commit();
             return true;

@@ -19,6 +19,46 @@ namespace ProjetoAPI.Controllers
             this.donoPostoService = donoPostoService;
             this.tokenService = tokenService;
         }
+        [Authorize]
+        [HttpGet("postos")]
+        public IActionResult ObterPostos()
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
+            {
+                return Unauthorized("Usuário não identificado.");
+            }
+            int donopostoId = int.Parse(userIdClaim.Value);
+            try
+            {
+                var postos = donoPostoService.MostrarPostos(donopostoId);
+                return Ok(postos);
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error.Message);
+            }
+        }
+        [Authorize]
+        [HttpGet("donoposto")]
+        public IActionResult ObterInfo()
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
+            {
+                return Unauthorized("Usuário não identificado.");
+            }
+            int donopostoId = int.Parse(userIdClaim.Value);
+            try
+            {
+                var donoposto = donoPostoService.MostrarInformacoes(donopostoId);
+                return Ok(donoposto);
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error.Message);
+            }
+        }
         [HttpPost("criarconta")]
         public IActionResult Registrar([FromBody] DonoPosto donoPosto)
         {
@@ -35,7 +75,7 @@ namespace ProjetoAPI.Controllers
             if (donoPostoService.ValidarCredenciais(donoPosto.email, donoPosto.senha))
             {
                 var token = tokenService.GenerateJwtToken(donoPosto.email);
-                return Ok($"Login realizado com sucesso! Token: {new { Token = token }}");
+                return Ok(new { Token = token });
             }
             return BadRequest();
         }
@@ -60,24 +100,36 @@ namespace ProjetoAPI.Controllers
             return BadRequest($"Falha ao criar posto");
         }
         [Authorize]
-        [HttpGet("postos")]
-        public IActionResult ObterPostos()
+        [HttpPut("editardonoposto")]
+        public IActionResult EditarDono(int id, [FromBody] DonoPosto donoposto)
         {
+            if (donoposto == null)
+            {
+                return BadRequest("Você não passou um Dono de um posto");
+            }
+            var sucesso = donoPostoService.EditarDonoPosto(id, donoposto);
+            if (sucesso)
+            {
+                return Ok(donoposto);
+            }
+            return BadRequest("Erro ao editar");
+        }
+        [Authorize]
+        [HttpDelete("deletar")]
+        public IActionResult Deletar()
+        {   
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
             if (userIdClaim == null)
             {
                 return Unauthorized("Usuário não identificado.");
             }
             int donopostoId = int.Parse(userIdClaim.Value);
-            try
+            var donoposto = donoPostoService.Remover(donopostoId);
+            if (donoposto == null)
             {
-                var postos = donoPostoService.MostrarPostos(donopostoId);
-                return Ok(postos);
+                return NotFound();
             }
-            catch (Exception error)
-            {
-                return BadRequest(error.Message);
-            }
+            return Ok(donoposto);
         }
     }
 }

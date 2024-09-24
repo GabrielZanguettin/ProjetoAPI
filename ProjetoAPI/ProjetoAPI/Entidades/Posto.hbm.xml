@@ -9,6 +9,9 @@
 		<property name="Telefone" column="telefone"/>
 		<property name="HoraFuncionamento" column="hora_funcionamento"/>
 		<property name="Bandeira" column="bandeira"/>
+		<property name="Gasolina" column="gasolina"/>
+		<property name ="Diesel" column="diesel"/>
+		<property name ="Etanol" column="etanol"/>
 		<many-to-one name="DonoPosto" class="DonoPosto" column="donopostoid" not-null="true" lazy="proxy"/>
 	</class>
 </hibernate-mapping>
