@@ -63,3 +63,4 @@ C:\Users\xxxga\source\repos\ProjetoAPI\ProjetoAPI\obj\Debug\net8.0\ProjetoAPI.pd
 C:\Users\xxxga\source\repos\ProjetoAPI\ProjetoAPI\obj\Debug\net8.0\ProjetoAPI.genruntimeconfig.cache
 C:\Users\xxxga\source\repos\ProjetoAPI\ProjetoAPI\obj\Debug\net8.0\ref\ProjetoAPI.dll
 C:\Users\xxxga\source\repos\ProjetoAPI\ProjetoAPI\bin\Debug\net8.0\hibernate.cfg.xml
+C:\Users\xxxga\source\repos\ProjetoAPI\ProjetoAPI\bin\Debug\net8.0\Npgsql.dll

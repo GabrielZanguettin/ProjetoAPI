@@ -68,10 +68,12 @@ namespace ProjetoAPI.Controllers
             {
                 return NotFound();
             }
-            if (donoposto.Postos != null && donoposto.Postos.Contains(posto)) {
+            if (donoposto.Postos.Any(p => p.PostoId == posto.PostoId))
+            {
                 postoService.Remover(id);
+                return Ok(posto);
             }
-            return Ok(posto);
+            return BadRequest(donopostoId);
         }
     }
 }
