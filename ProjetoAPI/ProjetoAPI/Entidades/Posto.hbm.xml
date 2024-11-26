@@ -3,14 +3,14 @@
 	<class name="Posto" table="posto">
 		<id name="PostoId" column="postoid">
 			<generator class="sequence">
-				<param name="sequence">hibernate_sequence</param>
+				<param name="sequence">postoid_sequence</param>
 			</generator>
 		</id>
 		<property name="CNPJ" column="cnpj"/>
+		<property name="NomePosto" column="nomeposto"/>
 		<property name="Endereco" column="endereco"/>
 		<property name="Telefone" column="telefone"/>
 		<property name="HoraFuncionamento" column="hora_funcionamento"/>
-		<property name="Bandeira" column="bandeira"/>
 		<property name="Gasolina" column="gasolina"/>
 		<property name ="Diesel" column="diesel"/>
 		<property name ="Etanol" column="etanol"/>

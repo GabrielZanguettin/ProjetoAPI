@@ -6907,19 +6907,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\xxxga\\.nuget\\packages\\": {}
+    "C:\\Users\\Aula\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\xxxga\\source\\repos\\ProjetoAPI\\ProjetoAPI\\ProjetoAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Aula\\Desktop\\main-main\\main-main\\Projeto\\ProjetoAPI\\ProjetoAPI.csproj",
       "projectName": "ProjetoAPI",
-      "projectPath": "C:\\Users\\xxxga\\source\\repos\\ProjetoAPI\\ProjetoAPI\\ProjetoAPI.csproj",
-      "packagesPath": "C:\\Users\\xxxga\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\xxxga\\source\\repos\\ProjetoAPI\\ProjetoAPI\\obj\\",
+      "projectPath": "C:\\Users\\Aula\\Desktop\\main-main\\main-main\\Projeto\\ProjetoAPI\\ProjetoAPI.csproj",
+      "packagesPath": "C:\\Users\\Aula\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Aula\\Desktop\\main-main\\main-main\\Projeto\\ProjetoAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\xxxga\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Aula\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6939,11 +6939,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -6998,7 +6993,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

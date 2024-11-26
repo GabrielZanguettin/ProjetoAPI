@@ -3,7 +3,7 @@
 	<class name="DonoPosto" table="dono_posto">
 		<id name="DonoPostoId" column="donopostoid">
 			<generator class="sequence">
-				<param name="sequence">hibernate_sequence</param>
+				<param name="sequence">donopostoid_sequence</param>
 			</generator>
 		</id>
 		<property name="Nome" column="nome"/>

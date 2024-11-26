@@ -75,14 +75,14 @@ namespace ProjetoAPI.Services
             }
             return donoPosto.Postos.ToList();
         }
-        public bool EditarDonoPosto(int id, DonoPosto donoposto)
+        public DonoPosto EditarDonoPosto (int id, DonoPosto donoposto)
         {
             using var session = sessionFactory.OpenSession();
             using var transaction = session.BeginTransaction();
             var donoPosto = session.Get<DonoPosto>(id);
             if (donoPosto == null)
             {
-                return false;
+                throw new Exception("DonoPosto nulo");
             }
             donoPosto.Nome = donoposto.Nome;
             donoPosto.CPF = donoposto.CPF;
@@ -91,7 +91,7 @@ namespace ProjetoAPI.Services
             donoPosto.Telefone = donoposto.Telefone;
             session.Update(donoPosto);
             transaction.Commit();
-            return true;
+            return donoPosto;
         }
         public DonoPosto MostrarInformacoes(int id)
         {
