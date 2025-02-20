@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="ProjetoAPI" namespace="ProjetoAPI.Entidades">
+	<class name="DonoPosto" table="dono_posto">
+		<id name="DonoPostoId" column="donopostoid">
+			<generator class="sequence">
+				<param name="sequence">donopostoid_sequence</param>
+			</generator>
+		</id>
+		<property name="Nome" column="nome"/>
+		<property name="CPF" column="cpf"/>
+		<property name="Email" column="email"/>
+		<property name="SenhaHasheada" column="senhahasheada"/>
+		<property name="Telefone" column="telefone"/>
+		<set name="Postos" table="posto" inverse="true" cascade="all-delete-orphan" lazy="false">
+			<key column="donopostoid"/>
+			<one-to-many class="Posto"/>
+		</set>
+	</class>
+</hibernate-mapping>
