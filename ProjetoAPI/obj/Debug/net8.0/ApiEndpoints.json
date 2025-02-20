@@ -1,0 +1,194 @@
+[
+  {
+    "ContainingType": "ProjetoAPI.Controllers.PostoController",
+    "Method": "GetPostosPorDiesel",
+    "RelativePath": "api/diesel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProjetoAPI.Controllers.DonoPostoController",
+    "Method": "GetInfos",
+    "RelativePath": "api/donoposto",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProjetoAPI.Controllers.DonoPostoController",
+    "Method": "RegisterDonoPosto",
+    "RelativePath": "api/donoposto",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "donoPosto",
+        "Type": "ProjetoAPI.Entidades.DonoPosto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProjetoAPI.Controllers.DonoPostoController",
+    "Method": "EditDono",
+    "RelativePath": "api/donoposto",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "donoposto",
+        "Type": "ProjetoAPI.Entidades.DonoPosto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProjetoAPI.Controllers.DonoPostoController",
+    "Method": "DeleteDono",
+    "RelativePath": "api/donoposto",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProjetoAPI.Controllers.DonoPostoController",
+    "Method": "GetGasStations",
+    "RelativePath": "api/donoposto/postos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProjetoAPI.Controllers.PostoController",
+    "Method": "GetPostosPorEtanol",
+    "RelativePath": "api/ethanol",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProjetoAPI.Controllers.PostoController",
+    "Method": "GetPostosPorGasolina",
+    "RelativePath": "api/gasoline",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProjetoAPI.Controllers.DonoPostoController",
+    "Method": "Login",
+    "RelativePath": "api/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "donoPosto",
+        "Type": "ProjetoAPI.Dtos.DonoPostoDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProjetoAPI.Controllers.DonoPostoController",
+    "Method": "Create",
+    "RelativePath": "api/posto",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "posto",
+        "Type": "ProjetoAPI.Entidades.Posto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProjetoAPI.Controllers.PostoController",
+    "Method": "Edit",
+    "RelativePath": "api/posto/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "posto",
+        "Type": "ProjetoAPI.Dtos.PostoDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProjetoAPI.Controllers.PostoController",
+    "Method": "Remove",
+    "RelativePath": "api/posto/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProjetoAPI.Controllers.PostoController",
+    "Method": "GetNewPostos",
+    "RelativePath": "api/postos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProjetoAPI.Controllers.PostoController",
+    "Method": "EditPrices",
+    "RelativePath": "api/prices/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "postodtogas",
+        "Type": "ProjetoAPI.Dtos.PostoDTOGas",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
