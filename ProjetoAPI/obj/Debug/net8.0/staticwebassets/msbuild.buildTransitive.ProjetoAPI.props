@@ -1,8 +1,0 @@
-<<<<<<< HEAD
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\ProjetoAPI.props" />
-=======
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\ProjetoAPI.props" />
->>>>>>> b27b432 (Adicionando API)
-</Project>
