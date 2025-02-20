@@ -1,0 +1,8 @@
+<<<<<<< HEAD
+﻿<Project>
+  <Import Project="Microsoft.AspNetCore.StaticWebAssets.props" />
+=======
+﻿<Project>
+  <Import Project="Microsoft.AspNetCore.StaticWebAssets.props" />
+>>>>>>> b27b432 (Adicionando API)
+</Project>
