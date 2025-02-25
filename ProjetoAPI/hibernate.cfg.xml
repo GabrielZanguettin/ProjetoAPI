@@ -4,7 +4,7 @@
 		<property name="dialect">NHibernate.Dialect.PostgreSQLDialect</property>
 		<property name="connection.driver_class">NHibernate.Driver.NpgsqlDriver</property>
 		<property name="connection.connection_string">
-			Server=alternately-busy-snapper.data-1.use1.tembo.io;Port=5432;Database=postgres;User id=postgres;Password=r5qWFcxE5QDuimhV;
+			***************************************************************************************************************************
 		</property>
 
 		<property name="show_sql">true</property>
